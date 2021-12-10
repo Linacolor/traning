@@ -1,17 +1,40 @@
 // import logo from './logo.svg';
 // import './App.css';
-import React from 'react';
+import React, { Component } from 'react';
 import Counter from './Counter/Counter';
 import InputForm from './InputForm/InputForm';
+import Modal from './Modal/Modal';
 
-const App = () => {
-  return (
-    <>
-      <h1> Состояние компонента</h1>
-      <Counter initualValue="10" />
-      <InputForm />
-    </>
-  );
-};
+class App extends Component {
+  state = {
+    showModal: false,
+  };
+
+  toggleModal = () => {
+    this.setState(({ showModal }) => ({
+      showModal: !showModal,
+    }));
+  };
+
+  render() {
+    const { showModal } = this.state;
+    return (
+      <>
+        {/* <h1> Состояние компонента</h1>
+        <Counter initualValue="10" />
+        <InputForm /> */}
+        <button type="button" onClick={this.toggleModal}>
+          Open modal
+        </button>
+        {showModal && (
+          <Modal>
+            <h1>This is modal content</h1>
+            <p>lorem</p>
+          </Modal>
+        )}
+      </>
+    );
+  }
+}
 
 export default App;
