@@ -20,16 +20,19 @@ class App extends Component {
     const { showModal } = this.state;
     return (
       <>
-        {/* <h1> Состояние компонента</h1>
+        <h1> Состояние компонента</h1>
         <Counter initualValue="10" />
-        <InputForm /> */}
+        <InputForm />
         <button type="button" onClick={this.toggleModal}>
           Open modal
         </button>
         {showModal && (
-          <Modal>
+          <Modal onClose={this.toggleModal}>
             <h1>This is modal content</h1>
             <p>lorem</p>
+            <button type="button" onClick={this.toggleModal}>
+              Close
+            </button>
           </Modal>
         )}
       </>
